@@ -16,4 +16,10 @@ package com.devf.requestsamples;
  * Created by Pedro Hernández on 09/2015.
  */
 public class Artista {
+
+    String nombre;
+
+    public Artista(String nombre) {
+        this.nombre = nombre;
+    }
 }
