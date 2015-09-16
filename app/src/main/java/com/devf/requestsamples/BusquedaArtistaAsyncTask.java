@@ -37,6 +37,11 @@ public class BusquedaArtistaAsyncTask extends AsyncTask<String, Void, List<Artis
     public static final String LOG_TAG = BusquedaArtistaAsyncTask.class.getSimpleName();
 
     @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+    }
+
+    @Override
     protected List<Artista> doInBackground(String... params) {
 
         if (params[0] == null) {
@@ -109,10 +114,12 @@ public class BusquedaArtistaAsyncTask extends AsyncTask<String, Void, List<Artis
         return null;
     }
 
+
+
     @Override
     protected void onPostExecute(List<Artista> artistas) {
         for (int i = 0; i < artistas.size(); i++) {
-            Log.i(LOG_TAG, artistas.get(i).nombre);¬
+            Log.i(LOG_TAG, artistas.get(i).nombre);
         }
     }
 
