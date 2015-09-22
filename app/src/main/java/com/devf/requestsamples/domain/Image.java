@@ -1,48 +1,34 @@
 package com.devf.requestsamples.domain;
 
-import com.google.gson.annotations.SerializedName;
-
-import java.util.ArrayList;
-
 /**
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p/>
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- * <p/>
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * <p/>
+ * <p>
  * Created by Pedro Hernández on 09/2015.
  */
-public class Artist {
+public class Image {
+    int height;
+    int width;
+    String url;
 
-    String name;
-
-    String id;
-
-    @SerializedName("popularity")
-    int popularity;
-
-    ArrayList<Image> images;
-
-    public String getName() {
-        return name;
+    public int getHeight() {
+        return height;
     }
 
-    public String getId() {
-        return id;
+    public int getWidth() {
+        return width;
     }
 
-    public int getPopularity() {
-        return popularity;
-    }
-
-    public ArrayList<Image> getImages() {
-        return images;
+    public String getUrl() {
+        return url;
     }
 }

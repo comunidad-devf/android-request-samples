@@ -41,10 +41,9 @@ public class MainActivity extends AppCompatActivity implements Callback<SearchAr
                 List<Artist> artists = searchArtistResponse.getArtist();
 
                 for (Artist artist : artists){
-                    Log.i("Retrofit", artist.getName());
+                    Log.i("Retrofit", artist.getImages().get(0).getUrl());
                 }
 
-                ApiClient.searchArtist();
             }
 
             @Override
