@@ -11,19 +11,47 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.devf.requestsamples.domain.Artist;
+import com.devf.requestsamples.io.ApiClient;
+import com.devf.requestsamples.io.model.SearchArtistResponse;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+
+public class MainActivity extends AppCompatActivity implements Callback<SearchArtistResponse> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SearchArtistResponse response = new SearchArtistResponse();
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        ejecutaPeticionConVolley("u2");
+
+        ApiClient.searchArtist("willie", new Callback<SearchArtistResponse>() {
+            @Override
+            public void success(SearchArtistResponse searchArtistResponse, retrofit.client.Response response) {
+                List<Artist> artists = searchArtistResponse.getArtist();
+
+                for (Artist artist : artists){
+                    Log.i("Retrofit", artist.getName());
+                }
+
+                ApiClient.searchArtist();
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                error.printStackTrace();
+            }
+        });
     }
 
     public void ejecutarPeticionConAsyncTask(){
@@ -48,5 +76,15 @@ public class MainActivity extends AppCompatActivity {
 
         VolleySingleton.getInstance(this)
                 .addToRequestQueue(request);
+    }
+
+    @Override
+    public void success(SearchArtistResponse searchArtistResponse, retrofit.client.Response response) {
+
+    }
+
+    @Override
+    public void failure(RetrofitError error) {
+
     }
 }
